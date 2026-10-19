@@ -5,6 +5,7 @@
 - **Project Title:** Serverless Payroll Management API Using PHP and AWS Lambda
 - **Technologies Used:** PHP 8.2, Bref 2.4 (FPM Runtime), AWS Lambda, Amazon API Gateway (HTTP API v2), Amazon S3 (AES-256 Encrypted), Dompdf 3.1, Bramus Router 1.6, Composer 2.9, Serverless Framework 3.40.
 - **Student / Author:** Mark Laurence Santos (`santos.marklaurence@student.auf.edu.ph`)
+- **GitHub Repository URL:** https://github.com/Kishhh19/Serverless-Payroll-Management.git
 - **AWS Account ID:** `408852558600`
 - **AWS Region:** `ap-southeast-1` (Asia Pacific - Singapore)
 - **S3 Bucket Name:** `payroll-payslips-408852558600-dev`
