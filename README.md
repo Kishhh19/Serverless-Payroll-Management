@@ -214,12 +214,12 @@ The bucket is created with:
    Serverless prints the live endpoint upon completion:
    ```
    endpoints:
-     httpApi: https://<api-id>.execute-api.ap-southeast-1.amazonaws.com
+     httpApi: https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com
    ```
 
 4. **Test Live AWS Endpoints:**
    ```bash
-   bash scripts/test-api.sh https://<api-id>.execute-api.ap-southeast-1.amazonaws.com
+   bash scripts/test-api.sh https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com
    ```
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment details and troubleshooting.
@@ -234,7 +234,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment details and troubleshooti
 - **Description:** Returns all 500 employee records enriched with position and department names.
 - **Sample Request:**
   ```bash
-  curl -i "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/employees"
+  curl -i "https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com/api/employees"
   ```
 - **Response `200 OK`:**
   ```json
@@ -264,7 +264,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment details and troubleshooti
 - **Description:** Calculates total records, gross pay, deductions, and net pay across all payroll runs.
 - **Sample Request:**
   ```bash
-  curl -i "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/reports/payroll"
+  curl -i "https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com/api/reports/payroll"
   ```
 - **Response `200 OK`:**
   ```json
@@ -287,7 +287,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment details and troubleshooti
 - **Description:** Fetches a single payroll record and its associated employee details.
 - **Sample Request:**
   ```bash
-  curl -i "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/payslips/1"
+  curl -i "https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com/api/payslips/1"
   ```
 - **Response `200 OK`:**
   ```json
@@ -324,7 +324,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment details and troubleshooti
 - **Description:** Generates a professional PDF payslip using Dompdf in memory and uploads it to Amazon S3 under `payslips/{payroll_id}.pdf`.
 - **Sample Request:**
   ```bash
-  curl -i -X POST "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/payslips/1/generate"
+  curl -i -X POST "https://ky6bt5wzbk.execute-api.ap-southeast-1.amazonaws.com/api/payslips/1/generate"
   ```
 - **Response `200 OK`:**
   ```json

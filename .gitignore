@@ -5,7 +5,9 @@
 # Composer dependencies
 /vendor/
 
-# Serverless Framework artifacts
+# Serverless Framework artifacts & Node
+node_modules/
+package-lock.json
 .serverless/
 .build/
 
