@@ -1,0 +1,77 @@
+service: serverless-payroll-api
+
+frameworkVersion: '3'
+
+custom:
+  defaultRegion: ap-southeast-1
+  bucketName: ${param:bucket, 'payroll-payslips-408852558600-${sls:stage, "dev"}'}
+
+provider:
+  name: aws
+  runtime: provided.al2
+  region: ${opt:region, self:custom.defaultRegion}
+  stage: ${opt:stage, 'dev'}
+  memorySize: 512
+  timeout: 28
+  environment:
+    APP_ENV: prod
+    PAYROLL_S3_BUCKET: ${self:custom.bucketName}
+    PAYSLIP_PREFIX: payslips/
+    AWS_REGION_NAME: ${self:provider.region}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+          Resource:
+            - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - ${self:custom.bucketName}
+                  - '/payslips/*'
+
+functions:
+  api:
+    handler: public/index.php
+    description: Serverless Payroll Management API running on PHP 8.2 and AWS Lambda
+    runtime: php-82-fpm
+    events:
+      - httpApi: '*'
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!tests/**'
+    - '!screenshots/**'
+    - '!scripts/**'
+    - '!*.md'
+    - '!.git/**'
+    - '!.github/**'
+    - '!.env*'
+    - '!calculate_totals.php'
+    - 'public/**'
+    - 'src/**'
+    - 'data/**'
+    - 'templates/**'
+    - 'vendor/**'
+
+plugins:
+  - ./vendor/bref/bref
+
+resources:
+  Resources:
+    PayslipsS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true
+        BucketEncryption:
+          ServerSideEncryptionConfiguration:
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256

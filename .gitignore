@@ -1,0 +1,25 @@
+# Environment variables
+.env
+.env.local
+
+# Composer dependencies
+/vendor/
+
+# Serverless Framework artifacts
+.serverless/
+.build/
+
+# Temporary and cache files
+/tmp/
+*.tmp
+*.log
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
